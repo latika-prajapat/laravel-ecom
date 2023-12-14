@@ -8,31 +8,17 @@
 <hr class="horizontal light mt-0 mb-2">
 <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
     <ul class="navbar-nav">
+      
         <li class="nav-item">
-            <a class="nav-link text-white active bg-gradient-primary" href="../pages/dashboard.html">
-                {{-- <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="material-icons opacity-10">dashboard</i>
-                </div> --}}
-                <span class="nav-link-text ms-1">Dashboard</span>
+            <a class="nav-link text-white font-weight-bold {{ Request::is('categories*') ? 'active bg-gradient-primary' : '' }}" href="{{ route('categories.index')}}">
+                <span class="nav-link-text ms-1">CATEGORIES</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white " href="{{url ('/categories')}}">
-                {{-- <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="material-icons opacity-10">table_view</i>
-                </div> --}}
-                <span class="nav-link-text ms-1">catgories</span>
+            <a class="nav-link text-white font-weight-bold {{ Request::is('users*') ? 'active bg-gradient-primary' : '' }}" href="{{ route('users.index')}}">
+                <span class="nav-link-text ms-1">USERS</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-white " href="{{url ('/add-category')}}">
-                {{-- <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="material-icons opacity-10">table_view</i>
-                </div> --}}
-                <span class="nav-link-text ms-1">Add-catgory</span>
-            </a>
-        </li>
-
     </ul>
 </div>
 

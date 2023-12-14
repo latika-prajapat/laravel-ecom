@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+// use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,22 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () 
+{
     return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('/dashboard', function () {
+Route::middleware(['auth', 'isAdmin'])->group(function () 
+{
+    Route::get('/dashboard', function () 
+    {
         return view('admin.index');
     });
-    
-    Route::get('/categories',[CategoryController::class,'index']);
-    Route::get('/add-category',[CategoryController::class,'addcategory']);
-    Route::post('/store-category',[CategoryController::class,'storecategory']);
-    Route::get('/edit-cate/{id}',[CategoryController::class,'editcategory']);
-    Route::get('/update-category/{id}',[CategoryController::class,'updatecategory']);
-    Route::get('/delete-cate/{id}',[CategoryController::class,'destroy']);
+
+    Route::resource('categories', CategoriesController::class);
+    Route::resource('users', UsersController::class);
 });
