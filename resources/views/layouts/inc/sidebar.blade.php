@@ -19,6 +19,11 @@
                 <span class="nav-link-text ms-1">USERS</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link text-white font-weight-bold {{ Request::is('products*') ? 'active bg-gradient-primary' : '' }}" href="{{ route('products.index')}}">
+                <span class="nav-link-text ms-1">PRODUCTS</span>
+            </a>
+        </li>
     </ul>
 </div>
 
