@@ -1,7 +1,9 @@
 <?php
 
 // use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\BannersController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -17,15 +19,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () 
-{
-    return view('welcome');
-});
+// Route::get('/', function () 
+// {
+//     return view('welcome');
+// });
+Route::resource('/', FrontendController::class);
 
+
+  
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::middleware(['auth', 'isAdmin'])->group(function () 
+Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () 
 {
     Route::get('/dashboard', function () 
     {
@@ -35,4 +40,5 @@ Route::middleware(['auth', 'isAdmin'])->group(function ()
     Route::resource('categories', CategoriesController::class);
     Route::resource('users', UsersController::class);
     Route::resource('products', ProductsController::class);
+    Route::resource('banners', BannersController::class);
 });

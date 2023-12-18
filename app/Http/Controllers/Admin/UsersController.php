@@ -55,7 +55,7 @@ class UsersController extends Controller
         $users->role = $request->role == TRUE ? 1 : 0;
         $users->save();
 
-        return redirect('/users')->with('status', 'users added successfully');
+        return redirect(route('users.index'))->with('status', 'users added successfully');
     }
 
     /**
@@ -103,7 +103,7 @@ class UsersController extends Controller
         $users->password = bcrypt($request->password);
         $users->role = $request->role == TRUE ? 1 : 0;
         $users->update();
-        return redirect('/users')->with('status', 'users edited successfully');
+        return redirect(route('users.index'))->with('status', 'users edited successfully');
     }
 
     /**
@@ -116,6 +116,6 @@ class UsersController extends Controller
     {
         $users = User::find($id);
         $users->delete();
-        return redirect('/users')->with('status', 'category deleted successfully');
+        return redirect(route('users.index'))->with('status', 'category deleted successfully');
     }
 }

@@ -18,7 +18,6 @@
                     <th>ID</th>
                     <th>Category</th>
                     <th>Product Name</th>
-
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Status</th>
@@ -35,8 +34,8 @@
                         <tr>
                             <td>{{ $product->id }}</td>
                             <td>
-                                @if ($product->category)
-                                    {{ $product->category->name }}
+                                @if ($product->category_name)
+                                    {{ $product->category_name }}
                                 @else
                                     No Category
                                 @endif
@@ -44,7 +43,15 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->selling_price }}</td>
                             <td>{{ $product->quantity }}</td>
-                            <td>{{ $product->status }}</td>
+                            <td>
+                                @if ($product->status == 1)
+                                    <label>Active</label>
+                                @elseif ($product->status == 0)
+                                    <label>Inactive</label>
+                                @else
+                                    <label>Active</label>
+                                @endif
+                            </td>
 
                             <td> {{ $product->updated_at }}</td>
                             <td>
@@ -57,14 +64,10 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
-
                             </td>
-
                         </tr>
                     @endforeach
-
                 </tbody>
-
             </table>
         </div>
         <div class="pagi" style="margin-left: 10px;">

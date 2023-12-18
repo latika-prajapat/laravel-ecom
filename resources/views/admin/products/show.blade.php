@@ -41,6 +41,22 @@
                     <td>Quantity</td>
                     <td>{{ $products->quantity }}</td>
                 </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>
+                        @if ($products->status == '0')
+                            <label value="0" selected>Inactive</label>
+                        @elseif ($products->status == '1')
+                            <label value="1" selected>Active</label>
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <td>Updated At</td>
+                    <td>
+                        {{ $products->updated_at }}
+                    </td>
+                </tr>
             </table>
         </div>
     </div>

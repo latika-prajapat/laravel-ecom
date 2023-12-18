@@ -32,9 +32,8 @@
                 <div class="input-group input-group-outline mb-4">
                     <label for="role" class="form-label"></label>
                     <select name="role" id="" class="form-select" >
-                        <option value="">select user</option>
-                        <option value="1">Admin</option>
-                        <option value="0">User</option>
+                        <option value="1"  {{ old('role') == '1' ? 'selected' : '' }}>Admin</option>
+                        <option value="0"  {{ old('role') == '0' ? 'selected' : '' }}>User</option>
                     </select>
                 </div>
                 <button type="submit" class="btn bg-gradient-primary">Add Users</button>

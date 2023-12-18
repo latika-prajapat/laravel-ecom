@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Models\Banner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Response;
 use Carbon\Carbon;
 
 
-class CategoriesController extends Controller
+class BannersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(5);
-        return view('admin.categories.index', compact('categories'));
+        $banners = Banner::orderBy('created_at', 'desc')->paginate(5);
+        return view('admin.banners.index', compact('banners'));
     }
 
     /**
@@ -29,8 +29,10 @@ class CategoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+   
     {
-        return view('admin.categories.create');
+       
+        return view('admin.banners.create');
     }
 
     /**
@@ -42,16 +44,16 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'desc' => 'required |max:255',
+            'heading' => 'required',
+            'para' => 'required |max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $categories = new Category();
+        $banners = new Banner();
         if ($request->hasFile('image')) 
         {
             $file = $request->file('image');
-            $path = 'categories/' . Carbon::now()->format('FY') . '/';
+            $path = 'banners/' . Carbon::now()->format('FY') . '/';
             $filename = time() . '.jpg';
             if (!File::exists(storage_path('/app/public/') . $path)) 
             {
@@ -59,15 +61,15 @@ class CategoriesController extends Controller
             }
             
             Image::make($file)->encode('jpg', 90)->save(storage_path('/app/public/') . $path . $filename);
-            $categories->image = $path . $filename;
+            $banners->image = $path . $filename;
         }
         
-        $categories->name = $request->name;
-        $categories->desc = $request->desc;
-        $categories->status = $request->status == TRUE ? 1 : 0;
-        $categories->save();
+        $banners->heading = $request->heading;
+        $banners->para = $request->para;
+        $banners->status = $request->status == TRUE ? 1 : 0;
+        $banners->save();
 
-        return redirect(route('categories.index'))->with('status', 'category added successfully');
+        return redirect(route('banners.index'))->with('status', 'banner added successfully');
     }
 
     /**
@@ -78,8 +80,8 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        $categories = Category::find($id);
-        return view('admin.categories.show', compact('categories'));
+        $banners = Banner::find($id);
+        return view('admin.banners.show', compact('banners'));
     }
 
     /**
@@ -90,8 +92,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::find($id);
-        return view('admin.categories.edit', compact('categories'));
+        $banners = Banner::find($id);
+        return view('admin.banners.edit', compact('banners'));
     }
 
     /**
@@ -103,33 +105,32 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
         $request->validate([
-            'name' => 'required',
-            'desc' => 'required |max:255',
+            'heading' => 'required',
+            'para' => 'required |max:255',
             'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        $categories = Category::findOrFail($id);
+        $banners = Banner::findOrFail($id);
         if ($request->hasFile('image')) {
-            if (File::exists(storage_path('app/public/' . $categories->image))) 
+            if (File::exists(storage_path('app/public/' . $banners->image))) 
             {
-                File::delete(storage_path('app/public/' . $categories->image));
+                File::delete(storage_path('app/public/' . $banners->image));
             }
             $file = $request->file('image');
-            $path = 'categories/' . Carbon::now()->format('FY') . '/';
+            $path = 'banners/' . Carbon::now()->format('FY') . '/';
             $filename = time() . '.jpg';
             if (!File::exists(storage_path('app/public/') . $path)) 
             {
                 File::makeDirectory(storage_path('app/public/') . $path, 0775, true);
             }
             Image::make($file)->encode('jpg', 90)->save(storage_path('app/public/') . $path . $filename);
-            $categories->image = $path . $filename;
+            $banners->image = $path . $filename;
         }
-        $categories->name = $request->name;
-        $categories->desc = $request->desc;
-        $categories->status = $request->status == TRUE ? 1 : 0;
-        $categories->update();
-        return redirect(route('categories.index'))->with('status', 'category edited successfully');
+        $banners->heading = $request->heading;
+        $banners->para = $request->para;
+        $banners->status = $request->status == TRUE ? 1 : 0;
+        $banners->update();
+        return redirect(route('banners.index'))->with('status', 'banner edited successfully');
     }
 
     /**
@@ -140,16 +141,16 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $categories = Category::find($id);
-        if ($categories->image) 
+        $banners = Banner::find($id);
+        if ($banners->image) 
         {
-            if (File::exists(storage_path('app/public/' . $categories->image))) 
+            if (File::exists(storage_path('app/public/' . $banners->image))) 
             {
-                File::delete(storage_path('app/public/' . $categories->image));
+                File::delete(storage_path('app/public/' . $banners->image));
             }
         }
 
-        $categories->delete();
-        return redirect(route('categories.index'))->with('status', 'category deleted successfully');
+        $banners->delete();
+        return redirect(route('banners.index'))->with('status', 'banner deleted successfully');
     }
 }

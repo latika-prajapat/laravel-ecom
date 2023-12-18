@@ -8,17 +8,16 @@
         </div>
         {{-- <button class="btn btn-icon btn-3 btn-primary" type="button"> --}}
         <div class="col-md-6" style="margin-left: 20px">
-            <a class="btn btn-primary" href="{{ route('categories.create') }}">+Add category</a>
+            <a class="btn btn-primary" href="{{ route('banners.create') }}">+Add banner</a>
         </div>
-
         {{-- </button> --}}
         <div class="card-body">
             <table class="table table-bordered">
                 <thead>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
                     <th>Image</th>
+                    <th>Heading</th>
+                    <th>Paragraph</th>
                     <th>Status</th>
                     <th>Updated At</th>
                     <th>Action</th>
@@ -29,49 +28,42 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    @foreach ($categories as $category)
+                    @foreach ($banners as $banner)
                         <tr>
-                            <td>{{ $category->id }}</td>
-                            <td>{{ $category->name }}</td>
-                            <td>{{ $category->desc }}</td>
+                            <td>{{ $banner->id }}</td>
                             <td>
-                                <img src="/storage/{{ $category->image }}" class="w-20" alt="">
-
+                                <img src="/storage/{{ $banner->image }}" class="w-20" alt="">
                             </td>
+                            <td>{{ $banner->heading }}</td>
+                            <td>{{ $banner->para }}</td>
                             <td>
-                                @if ($category->status == 1)
+                                @if ($banner->status == 1)
                                     <label>Active</label>
-                                @elseif ($category->status == 0)
+                                @elseif ($banner->status == 0)
                                     <label>Inactive</label>
                                 @else
                                     <label>Active</label>
                                 @endif
                             </td>
-                            <td> {{ $category->updated_at }}</td>
-                           
+                            <td> {{ $banner->updated_at}}</td>
                             <td>
-                                <a href="{{ route('categories.show', ['category' => $category->id]) }}"
+                                <a href="{{ route('banners.show', ['banner' => $banner->id]) }}"
                                     class="btn btn-info">View</a>
-                                <a href="{{ route('categories.edit', ['category' => $category->id]) }}"
+                                <a href="{{ route('banners.edit', ['banner' => $banner->id]) }}"
                                     class="btn btn-success">Edit</a>
-                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                <form action="{{ route('banners.destroy', $banner->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
-
                             </td>
-
                         </tr>
                     @endforeach
-
                 </tbody>
-
             </table>
         </div>
         <div class="pagi" style="margin-left: 10px;">
-            {{ $categories->links() }}
+            {{ $banners->links() }}
         </div>
-
     </div>
 @endsection

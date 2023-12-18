@@ -30,16 +30,10 @@
                     <input type="password" class="form-control" value="{{ $users->password }}" name="password">
                 </div>
                 <div class="input-group input-group-outline mb-4">
-
                     <label for="role" class="form-label"></label>
                     <select name="role" class="form-select">
-                        @if ($users->role == '0')
-                            <option value="0" selected>User</option>
-                            <option value="1">Admin</option>
-                        @elseif ($users->role == '1')
-                            <option value="0">User</option>
-                            <option value="1" selected>Admin</option>
-                        @endif
+                        <option value="1"  {{ $users->role == '1' ? 'selected' : '' }}>Admin</option>
+                        <option value="0"  {{ $users->role == '0' ? 'selected' : '' }}>User</option>
                     </select>
                 </div>
                 <button type="submit" class="btn bg-gradient-primary">Save</button>

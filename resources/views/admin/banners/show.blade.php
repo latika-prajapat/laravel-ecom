@@ -8,27 +8,27 @@
         <div class="card-body">
             <table class="table">
                 <tr>
-                    <td>Name</td>
-                    <td>{{ $categories->name }}</td>
+                    <td>Heading</td>
+                    <td>{{ $banners->heading }}</td>
                 </tr>
                 <tr>
-                    <td>Description</td>
-                    <td>{{ $categories->desc }}</td>
+                    <td>Paragraph</td>
+                    <td>{{ $banners->para }}</td>
                 </tr>
                 <tr>
                     <td>Image</td>
                     <td>
-                        @if ($categories->image)
-                            <img src="/storage/{{ $categories->image }}" class="w-20" alt="">
+                        @if ($banners->image)
+                            <img src="/storage/{{ $banners->image }}" class="w-20" alt="">
                         @endif
                     </td>
                 </tr>
                 <tr>
                     <td>Status</td>
                     <td>
-                        @if ($categories->status == '0')
+                        @if ($banners->status == '0')
                             <label value="0" selected>Inactive</label>
-                        @elseif ($categories->status == '1')
+                        @elseif ($banners->status == '1')
                             <label value="1" selected>Active</label>
                         @endif
                     </td>
@@ -36,7 +36,7 @@
                 <tr>
                     <td>Updated At</td>
                     <td>
-                        {{ $categories->updated_at }}
+                        {{ $banners->updated_at }}
                     </td>
                 </tr>
             </table>

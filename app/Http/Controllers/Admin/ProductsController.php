@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Response;
 use Carbon\Carbon;
+use DB;
 
 class ProductsController extends Controller
 {
@@ -20,11 +21,24 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('products')->get();
-        $products = Product::with('category')->orderBy('created_at', 'desc')->paginate(5);
 
+        // $products = Product::with('category')->orderBy('created_at', 'desc')->paginate(5);
+        $products = DB::table('products')
+        ->join('categories', 'products.category_id', '=', 'categories.id')
+        ->select(
+            'products.id',
+            'categories.name as category_name',
+            'products.name',
+            'products.image',
+            'products.description',
+            'products.selling_price',
+            'products.quantity',
+            'products.status',
+            'products.updated_at'
+        )
+        ->paginate(5);
 
-        return view('admin.products.index', compact('products', 'categories'));
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -76,7 +90,7 @@ class ProductsController extends Controller
         $products->status = $request->status == TRUE ? 1 : 0;
         $products->save();
 
-        return redirect('/products')->with('status', 'product added successfully');
+        return redirect(route('products.index'))->with('status', 'product added successfully');
     }
 
     /**
@@ -118,7 +132,7 @@ class ProductsController extends Controller
             'category_id' => 'required|exists:categories,id', // Ensure that the category_id exists in the 'categories' table
             'name' => 'required',
             'description' => 'required|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'sometimes|required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'selling_price' => 'required|numeric|min:0',
             'status' => 'boolean',
         ]);
@@ -143,7 +157,7 @@ class ProductsController extends Controller
         $products->quantity = $request->quantity;
         $products->status = $request->status == TRUE ? 1 : 0;
         $products->update();
-        return redirect('/products')->with('status', 'product edited successfully');
+        return redirect(route('products.index'))->with('status', 'product edited successfully');
     }
 
     /**
@@ -162,6 +176,6 @@ class ProductsController extends Controller
         }
 
         $products->delete();
-        return redirect('/products')->with('status', 'product deleted successfully');
+        return redirect(route('products.index'))->with('status', 'product deleted successfully');
     }
 }

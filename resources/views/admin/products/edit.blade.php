@@ -19,10 +19,11 @@
                 @method('PUT')
                 @csrf
                 <div class="input-group input-group-outline mb-4">
-
                     <select name="category_id" class="form-control p-3" id="category">
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" @if($category->id == $products->category_id) selected @endif>
+                                {{ $category->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -53,10 +54,12 @@
                     <input type="numb" name="selling_price" value="{{ $products->selling_price }}" id="selling_price"
                         class="form-control">
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="customRadio2"
-                        {{ $products->status == '1' ? 'checked' : '' }}>
-                    <label class="custom-control-label" for="customRadio2">status</label>
+                <div class="input-group input-group-outline mb-4">
+                    <label for="status" class="form-label"></label>
+                    <select name="status" class="form-select">
+                        <option value="1"  {{ $products->status == '1' ? 'selected' : '' }}>Active</option>
+                        <option value="0"  {{ $products->status == '0' ? 'selected' : '' }}>Inactive</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn bg-gradient-primary">Save</button>
             </form>

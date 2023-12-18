@@ -25,6 +25,12 @@
                         @endif
                     </td>
                 </tr>
+                <tr>
+                    <td>Updated At</td>
+                    <td>
+                        {{ $users->updated_at }}
+                    </td>
+                </tr>
             </table>
         </div>
     </div>

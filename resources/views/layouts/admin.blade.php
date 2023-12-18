@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-
+    
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,8 +22,6 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-
-
     <aside
         class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
         id="sidenav-main">
@@ -37,10 +35,20 @@
         @yield('main-content')
         @include('layouts.inc.footer')
     </div>
-
     <script src="{{ asset('admin/js/popper.min.js') }}"></script>
     <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('admin/js/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
+
+
+
+    @if (session('status'))
+        <script>
+            console.log("{{ session('status') }}");
+            Swal.fire("{{ session('status') }}");
+        </script>
+    @endif
+
     @yield('scripts')
 </body>
 
