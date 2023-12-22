@@ -31,6 +31,11 @@
                     <input type="text" class="form-control" placeholder="Name" name="name"
                         value="{{ old('name') }}">
                 </div>
+                <div class="input-group input-group-outline mb-4">
+                    <label class="form-label"></label>
+                    <input type="text" class="form-control" placeholder="Name" name="slug"
+                        value="{{ old('slug') }}">
+                </div>
                 <div class="input-group input-group-dynamic">
                     <textarea class="form-control" name="description" rows="5" placeholder="write long description about the category"
                         spellcheck="false" value="">{{ old('description') }}</textarea>

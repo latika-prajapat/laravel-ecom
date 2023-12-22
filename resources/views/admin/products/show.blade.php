@@ -22,6 +22,10 @@
                     <td>{{ $products->name }}</td>
                 </tr>
                 <tr>
+                    <td>Slug</td>
+                    <td>{{ $products->slug }}</td>
+                </tr>
+                <tr>
                     <td>Description</td>
                     <td>{{ $products->description }}</td>
                 </tr>
