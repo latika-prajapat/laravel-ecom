@@ -17,33 +17,33 @@
                             <label class="custom-control-label" for="price-all">All Price</label>
                             <span class="badge border font-weight-normal">1000</span>
                         </div> --}}
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-1" name="price_range"
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="price-1" name="price_range"
                                 value="0-100" {{ request('price_range') == '0-100' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="price-1">$0 - $100</label>
                             {{-- <button class="custom-control-label" type="submit"> $0 - $100</button> --}}
                             {{-- <span class="badge border font-weight-normal">150</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-2" name="price_range"
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="price-2" name="price_range"
                                 value="100-200" {{ request('price_range') == '100-200' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="price-2">$100 - $200</label>
                             {{-- <span class="badge border font-weight-normal">295</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-3" name="price_range"
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="price-3" name="price_range"
                                 value="200-300" {{ request('price_range') == '200-300' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="price-3">$200 - $300</label>
                             {{-- <span class="badge border font-weight-normal">246</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-4" name="price_range"
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="price-4" name="price_range"
                                 value="300-400" {{ request('price_range') == '300-400' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="price-4">$300 - $400</label>
                             {{-- <span class="badge border font-weight-normal">145</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="price-5" name="price_range"
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between">
+                            <input type="radio" class="custom-control-input" id="price-5" name="price_range"
                                 value="400-500" {{ request('price_range') == '400-500' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="price-5">$400 - $500</label>
                             {{-- <span class="badge border font-weight-normal">168</span> --}}
@@ -56,38 +56,38 @@
                 <!-- Color Start -->
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Filter by color</h5>
-                    <form>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="color-all">
-                            <label class="custom-control-label" for="price-all">All Color</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-1">
+                    <form method="GET" action="{{ route('welcome.product.index') }}">
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="color-1" name="color" value="Black"
+                                {{ request('color') == 'Black' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="color-1">Black</label>
-                            <span class="badge border font-weight-normal">150</span>
+                            {{-- <span class="badge border font-weight-normal">150</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-2">
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="color-2" name="color" value="White"
+                                {{ request('color') == 'White' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="color-2">White</label>
-                            <span class="badge border font-weight-normal">295</span>
+                            {{-- <span class="badge border font-weight-normal">295</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-3">
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="color-3" name="color" value="Red"
+                                {{ request('color') == 'Red' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="color-3">Red</label>
-                            <span class="badge border font-weight-normal">246</span>
+                            {{-- <span class="badge border font-weight-normal">246</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-4">
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="color-4" name="color" value="Blue"
+                                {{ request('color') == 'Blue' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="color-4">Blue</label>
-                            <span class="badge border font-weight-normal">145</span>
+                            {{-- <span class="badge border font-weight-normal">145</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between">
+                            <input type="radio" class="custom-control-input" id="color-5" name="color" value="Green"
+                                {{ request('color') == 'Green' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="color-5">Green</label>
-                            <span class="badge border font-weight-normal">168</span>
+                            {{-- <span class="badge border font-weight-normal">168</span> --}}
                         </div>
-
+                        <button class="btn btn-primary btn-block mt-3" type="submit">Filter</button>
                     </form>
                 </div>
                 <!-- Color End -->
@@ -95,37 +95,38 @@
                 <!-- Size Start -->
                 <div class="mb-5">
                     <h5 class="font-weight-semi-bold mb-4">Filter by size</h5>
-                    <form>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="size-all">
-                            <label class="custom-control-label" for="size-all">All Size</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-1">
+                    <form method="GET" action="{{ route('welcome.product.index') }}">
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="size-1" name="size" value="XS"
+                            {{ request('size') == 'XS' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="size-1">XS</label>
-                            <span class="badge border font-weight-normal">150</span>
+                            {{-- <span class="badge border font-weight-normal">150</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-2">
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="size-2" name="size" value="S"
+                            {{ request('size') == 'S' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="size-2">S</label>
-                            <span class="badge border font-weight-normal">295</span>
+                            {{-- <span class="badge border font-weight-normal">295</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-3">
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="size-3" name="size" value="M"
+                            {{ request('size') == 'M' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="size-3">M</label>
-                            <span class="badge border font-weight-normal">246</span>
+                            {{-- <span class="badge border font-weight-normal">246</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-4">
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" class="custom-control-input" id="size-4" name="size" value="L"
+                            {{ request('size') == 'L' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="size-4">L</label>
-                            <span class="badge border font-weight-normal">145</span>
+                            {{-- <span class="badge border font-weight-normal">145</span> --}}
                         </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="size-5">
+                        <div class="custom-control custom-radio d-flex align-items-center justify-content-between">
+                            <input type="radio" class="custom-control-input" id="size-5" name="size" value="XL"
+                            {{ request('size') == 'XL' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="size-5">XL</label>
-                            <span class="badge border font-weight-normal">168</span>
+                            {{-- <span class="badge border font-weight-normal">168</span> --}}
                         </div>
+                        <button class="btn btn-primary btn-block mt-3" type="submit">Filter</button>
                     </form>
                 </div>
                 <!-- Size End -->
@@ -156,8 +157,10 @@
                                         Sort by
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                        <button class="dropdown-item" type="submit" name="sort" value="latest" href="#">Latest</button>
-                                        <button class="dropdown-item" type="submit" name="sort" value="oldest" href="#">oldest</button>
+                                        <button class="dropdown-item" type="submit" name="sort" value="latest"
+                                            href="#">Latest</button>
+                                        <button class="dropdown-item" type="submit" name="sort" value="oldest"
+                                            href="#">oldest</button>
                                     </div>
                                 </form>
                             </div>

@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/style.min.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </head>
 

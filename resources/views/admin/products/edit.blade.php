@@ -53,11 +53,32 @@
                         class="form-control">
 
                 </div>
+                <div class="input-group input-group-outline mb-4">
+                    <label for="color" class="form-label"></label>
+                    <select name="color" id="" class="form-select">
+                        <option value="Black" {{ $products->color == 'Black' ? 'selected' : '' }} >Black</option>
+                        <option value="White" {{ $products->color == 'White' ? 'selected' : '' }} >White</option>
+                        <option value="Red" {{ $products->color == 'Red' ? 'selected' : '' }} >Red</option>
+                        <option value="Blue" {{ $products->color == 'Blue' ? 'selected' : '' }} >Blue</option>
+                        <option value="Green" {{ $products->color == 'Green' ? 'selected' : '' }} >Green</option>
+                    </select>
+                </div>
+                <div class="input-group input-group-outline mb-4">
+                    <label for="size" class="form-label"></label>
+                    <select name="size" id="" class="form-select">
+                        <option value="XS" {{ $products->size == 'XS' ? 'selected' : '' }} >XS</option>
+                        <option value="S" {{ $products->size == 'S' ? 'selected' : '' }} >S</option>
+                        <option value="M" {{ $products->size == 'M' ? 'selected' : '' }} >M</option>
+                        <option value="L" {{ $products->size == 'L' ? 'selected' : '' }} >L</option>
+                        <option value="XL" {{ $products->size == 'XL' ? 'selected' : '' }}  >XL</option>
+                    </select>
+                </div>
                 <div class="input-group input-group-static my-3">
                     <label for="selling_price">Selling Price</label>
                     <input type="numb" name="selling_price" value="{{ $products->selling_price }}" id="selling_price"
                         class="form-control">
                 </div>
+
                 <div class="input-group input-group-outline mb-4">
                     <label for="status" class="form-label"></label>
                     <select name="status" class="form-select">

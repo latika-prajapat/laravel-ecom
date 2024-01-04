@@ -36,6 +36,11 @@
                     <input type="text" class="form-control" placeholder="Name" name="slug"
                         value="{{ old('slug') }}">
                 </div>
+                {{-- <div class="input-group input-group-outline mb-4">
+                    <label class="form-label"></label>
+                    <input type="color" id="color" name="color" 
+                        value="{{ old('slug') }}">
+                </div> --}}
                 <div class="input-group input-group-dynamic">
                     <textarea class="form-control" name="description" rows="5" placeholder="write long description about the category"
                         spellcheck="false" value="">{{ old('description') }}</textarea>
@@ -49,6 +54,26 @@
                     <label for="quantity">Quantity</label>
                     <input type="numb" name="quantity" id="quantity" class="form-control">
 
+                </div>
+                <div class="input-group input-group-outline mb-4">
+                    <label for="color" class="form-label"></label>
+                    <select name="color" id="" class="form-select">
+                        <option value="Black"  {{ old('color') == 'Black' ? 'selected' : '' }}>Black</option>
+                        <option value="White"  {{ old('color') == 'White' ? 'selected' : '' }}>White</option>
+                        <option value="Red"  {{ old('color') == 'Red' ? 'selected' : '' }}>Red</option>
+                        <option value="Blue"  {{ old('color') == 'Blue' ? 'selected' : '' }}>Blue</option>
+                        <option value="Green"  {{ old('color') == 'Green' ? 'selected' : '' }}>Green</option>
+                    </select>
+                </div>
+                <div class="input-group input-group-outline mb-4">
+                    <label for="size" class="form-label"></label>
+                    <select name="size" id="" class="form-select">
+                        <option value="XS"  {{ old('size') == 'XS' ? 'selected' : '' }}>XS</option>
+                        <option value="S"  {{ old('size') == 'S' ? 'selected' : '' }}>S</option>
+                        <option value="M"  {{ old('size') == 'M' ? 'selected' : '' }}>M</option>
+                        <option value="L"  {{ old('size') == 'L' ? 'selected' : '' }}>L</option>
+                        <option value="XL"  {{ old('size') == 'XL' ? 'selected' : '' }}>XL</option>
+                    </select>
                 </div>
                 <div class="input-group input-group-static my-3">
                     <label for="selling_price">Selling Price</label>

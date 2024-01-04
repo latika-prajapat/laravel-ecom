@@ -42,6 +42,14 @@
                     <td>{{ $products->selling_price }}</td>
                 </tr>
                 <tr>
+                    <td>color</td>
+                    <td>{{ $products->color }}</td>
+                </tr>
+                <tr>
+                    <td>size</td>
+                    <td>{{ $products->size }}</td>
+                </tr>
+                <tr>
                     <td>Quantity</td>
                     <td>{{ $products->quantity }}</td>
                 </tr>

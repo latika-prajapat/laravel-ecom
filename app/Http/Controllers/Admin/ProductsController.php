@@ -33,6 +33,8 @@ class ProductsController extends Controller
             'products.description',
             'products.selling_price',
             'products.quantity',
+            'products.color',
+            'products.size',
             'products.status',
             'products.updated_at'
         )
@@ -87,6 +89,8 @@ class ProductsController extends Controller
         $products->description = $request->description;
         $products->selling_price = $request->selling_price;
         $products->quantity = $request->quantity;
+        $products->color = $request->color;
+        $products->size = $request->size;
         $products->status = $request->status == TRUE ? 1 : 0;
         $products->save();
 
@@ -155,6 +159,8 @@ class ProductsController extends Controller
         $products->description = $request->description;
         $products->selling_price = $request->selling_price;
         $products->quantity = $request->quantity;
+        $products->color = $request->color;
+        $products->size = $request->size;
         $products->status = $request->status == TRUE ? 1 : 0;
         $products->update();
         return redirect(route('products.index'))->with('status', 'product edited successfully');

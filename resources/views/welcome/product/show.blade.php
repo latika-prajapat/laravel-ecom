@@ -85,14 +85,14 @@
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus">
-                                <i class="fa fa-minus"></i>
+                            <button class="btn btn-primary btn-minus decrement">
+                                {{-- <i class="fa fa-minus "></i> --}}-
                             </button>
                         </div>
-                        <input type="text" class="form-control bg-secondary text-center" value="1">
+                        <input type="text" class="form-control bg-secondary text-center qty-input" value="1">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
-                                <i class="fa fa-plus"></i>
+                            <button class="btn btn-primary btn-plus " id="increment">
+                                +{{-- <i class="fa fa-plus "></i> --}}
                             </button>
                         </div>
                     </div>
@@ -157,4 +157,32 @@
         </div>
     </div>
     <!-- Products End -->
+
+
+    <script>
+        $(document).ready(function() {
+            $('#increment').click(function(e) {
+                e.preventDefault();
+                var inc_value = $('.qty-input').val();
+                var value = parseInt(inc_value, 15);
+                value = isNaN(value) ? 0 : value;
+                if (value < 15) {
+                    value++;
+                    $('.qty-input').val(value);
+                }
+            })
+            $('.decrement').click(function(e) {
+                e.preventDefault();
+                var dec_value = $('.qty-input').val();
+                var value = parseInt(dec_value, 15);
+                value = isNaN(value) ? 0 : value;
+                if (value > 1) {
+                    value--;
+                    $('.qty-input').val(value);
+                }
+            })
+        });
+       
+    </script>
 @endsection
+

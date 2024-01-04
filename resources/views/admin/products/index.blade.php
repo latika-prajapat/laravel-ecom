@@ -20,6 +20,8 @@
                     <th>Product Name</th>
                     <th>Quantity</th>
                     <th>Price</th>
+                    <th>color</th>
+                    <th>size</th>
                     <th>Status</th>
                     <th>Updated At</th>
                     <th>Action</th>
@@ -43,6 +45,8 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->selling_price }}</td>
                             <td>{{ $product->quantity }}</td>
+                            <td>{{ $product->color }}</td>
+                            <td>{{ $product->size }}</td>
                             <td>
                                 @if ($product->status == 1)
                                     <label>Active</label>

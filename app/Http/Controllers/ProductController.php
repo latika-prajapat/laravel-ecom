@@ -16,29 +16,42 @@ class ProductController extends Controller
         // select * from products where title LIKE '%$search%'
         $featured_products = Product::where('status', '1');
 
+        // Search Filter
         $search = $request->search;
-
         if ($search) {
             $featured_products = $featured_products->where('name', 'LIKE', "%{$search}%");
         }
+
+        // Price Filter
         $priceRange = $request->price_range;
         if ($priceRange) {
-            $Ranges = [
+            $ranges = [
                 '0-100' => [0, 100],
                 '100-200' => [100, 200],
                 '200-300' => [200, 300],
                 '300-400' => [300, 400],
                 '400-500' => [400, 500],
             ];
-            $featured_products = $featured_products->whereBetween('selling_price', $Ranges[$priceRange]);
+            $featured_products = $featured_products->whereBetween('selling_price', $ranges[$priceRange]);
         }
+        //order sort 
         $sort = $request->sort;
         if ($sort === 'latest') {
             // return('working latetst');
-            $featured_products = $featured_products->orderBy('updated_at');
+            $featured_products = $featured_products->orderBy('created_at', 'DESC');
         } elseif ($sort === 'oldest') {
             // return('working oldest');
-            $featured_products = $featured_products->orderBy('created_at');
+            $featured_products = $featured_products->orderBy('created_at', 'ASC');
+        }
+        // color filter
+        $color = $request->color;
+        if ($color) {
+            $featured_products = $featured_products->whereIn('color', [$color]);
+        }
+        // size filter
+        $size = $request->size;
+        if ($size) {
+            $featured_products = $featured_products->whereIn('size', [$size]);
         }
         $featured_products = $featured_products->get();
 

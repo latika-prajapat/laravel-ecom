@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\BannersController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\ColorsController;
+use App\Http\Controllers\Admin\SizesController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +37,6 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::resource('users', UsersController::class);
     Route::resource('products', ProductsController::class);
     Route::resource('banners', BannersController::class);
+    Route::resource('colors', ColorsController::class);
+    Route::resource('sizes', SizesController::class);
 });

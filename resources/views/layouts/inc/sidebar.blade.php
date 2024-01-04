@@ -37,6 +37,7 @@
                 <span class="nav-link-text ms-1">PRODUCTS</span>
             </a>
         </li>
+     
         <li class="nav-item">
             <a class="nav-link text-white font-weight-bold {{ Request::is('banners*') ? 'active bg-gradient-primary' : '' }}"
                 href="{{ route('banners.index') }}">
