@@ -5,13 +5,17 @@
 @endsection
 @section('content')
     <div class="container-fluid pt-5">
+        <form method="GET" action="{{ route('welcome.product.index') }}">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
             <div class="col-lg-3 col-md-12">
+                
+                    <a href="" class="btn btn-primary btn-block mt-3 mb-3" >Reset </a>
+                
                 <!-- Price Start -->
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
-                    <form method="GET" action="{{ route('welcome.product.index') }}">
+                    
                         {{-- <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" name="" class="custom-control-input" checked id="price-all">
                             <label class="custom-control-label" for="price-all">All Price</label>
@@ -49,14 +53,14 @@
                             {{-- <span class="badge border font-weight-normal">168</span> --}}
                         </div>
                         <button class="btn btn-primary btn-block mt-3" type="submit">Filter</button>
-                    </form>
+                    
                 </div>
                 <!-- Price End -->
 
                 <!-- Color Start -->
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Filter by color</h5>
-                    <form method="GET" action="{{ route('welcome.product.index') }}">
+                    
                         <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
                             <input type="radio" class="custom-control-input" id="color-1" name="color" value="Black"
                                 {{ request('color') == 'Black' ? 'checked' : '' }}>
@@ -88,48 +92,49 @@
                             {{-- <span class="badge border font-weight-normal">168</span> --}}
                         </div>
                         <button class="btn btn-primary btn-block mt-3" type="submit">Filter</button>
-                    </form>
+                    
                 </div>
                 <!-- Color End -->
 
                 <!-- Size Start -->
                 <div class="mb-5">
                     <h5 class="font-weight-semi-bold mb-4">Filter by size</h5>
-                    <form method="GET" action="{{ route('welcome.product.index') }}">
+                    
                         <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                            <input type="radio" class="custom-control-input" id="size-1" name="size" value="XS"
-                            {{ request('size') == 'XS' ? 'checked' : '' }}>
+                            <input type="radio" class="custom-control-input" id="size-1" name="size"
+                                value="XS" {{ request('size') == 'XS' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="size-1">XS</label>
                             {{-- <span class="badge border font-weight-normal">150</span> --}}
                         </div>
                         <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                            <input type="radio" class="custom-control-input" id="size-2" name="size" value="S"
-                            {{ request('size') == 'S' ? 'checked' : '' }}>
+                            <input type="radio" class="custom-control-input" id="size-2" name="size"
+                                value="S" {{ request('size') == 'S' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="size-2">S</label>
                             {{-- <span class="badge border font-weight-normal">295</span> --}}
                         </div>
                         <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                            <input type="radio" class="custom-control-input" id="size-3" name="size" value="M"
-                            {{ request('size') == 'M' ? 'checked' : '' }}>
+                            <input type="radio" class="custom-control-input" id="size-3" name="size"
+                                value="M" {{ request('size') == 'M' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="size-3">M</label>
                             {{-- <span class="badge border font-weight-normal">246</span> --}}
                         </div>
                         <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                            <input type="radio" class="custom-control-input" id="size-4" name="size" value="L"
-                            {{ request('size') == 'L' ? 'checked' : '' }}>
+                            <input type="radio" class="custom-control-input" id="size-4" name="size"
+                                value="L" {{ request('size') == 'L' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="size-4">L</label>
                             {{-- <span class="badge border font-weight-normal">145</span> --}}
                         </div>
                         <div class="custom-control custom-radio d-flex align-items-center justify-content-between">
-                            <input type="radio" class="custom-control-input" id="size-5" name="size" value="XL"
-                            {{ request('size') == 'XL' ? 'checked' : '' }}>
+                            <input type="radio" class="custom-control-input" id="size-5" name="size"
+                                value="XL" {{ request('size') == 'XL' ? 'checked' : '' }}>
                             <label class="custom-control-label" for="size-5">XL</label>
                             {{-- <span class="badge border font-weight-normal">168</span> --}}
                         </div>
                         <button class="btn btn-primary btn-block mt-3" type="submit">Filter</button>
-                    </form>
+                    
                 </div>
                 <!-- Size End -->
+
             </div>
             <!-- Shop Sidebar End -->
 
@@ -139,7 +144,7 @@
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="{{ route('welcome.product.index') }}" method="GET">
+                            
                                 <div class="input-group">
                                     <input type="text" name="search" class="form-control"
                                         placeholder="Search by name">
@@ -149,9 +154,9 @@
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+                            
                             <div class="dropdown ml-4">
-                                <form action="{{ route('welcome.product.index') }}" method="GET">
+                                
                                     <button class="btn border dropdown-toggle" type="button" id="triggerId"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Sort by
@@ -162,11 +167,11 @@
                                         <button class="dropdown-item" type="submit" name="sort" value="oldest"
                                             href="#">oldest</button>
                                     </div>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
-                    @foreach ($featured_products as $prods)
+                    @foreach ($products as $prods)
                         <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                             <div class="card product-item border-0 mb-4">
                                 <div
@@ -181,12 +186,13 @@
                                         <h6 class="text-muted ml-2"><del>{{ $prods->selling_price }}</del></h6>
                                     </div>
                                 </div>
-                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                <div class="card-footer d-flex justify-content-center bg-light border">
                                     <a href="{{ route('welcome.product.show', ['id' => $prods->id]) }}"
-                                        class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
+                                        class="btn btn-sm text-dark  p-0"><i class="fas fa-eye text-primary mr-1"></i>View
                                         Detail</a>
-                                    <a href="" class="btn btn-sm text-dark p-0"><i
-                                            class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                    {{-- <a href="{{ route('Addcart', ['id' => $prods->id]) }}"
+                                        class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Add
+                                        To Cart</a> --}}
                                 </div>
                             </div>
 
@@ -217,5 +223,6 @@
             </div>
             <!-- Shop Product End -->
         </div>
+        </form>
     </div>
 @endsection

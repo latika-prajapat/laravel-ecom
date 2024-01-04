@@ -106,7 +106,9 @@
                                     <a href="checkout.html" class="dropdown-item">Checkout</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="" class="nav-item nav-link">Contact</a>
+                            <a href="{{ route('welcome.product.cart') }}" class="nav-item nav-link">Cart</a>
+                            
                         </div>
                         <ul class="navbar-nav ms-auto">
                             <!-- Authentication Links -->
@@ -298,6 +300,7 @@
                                 </div>
                             </div>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="{{ route('welcome.product.cart') }}" class="nav-item nav-link">Cart</a>
                         </div>
                         <ul class="navbar-nav ms-auto">
                             <!-- Authentication Links -->
@@ -353,4 +356,6 @@
             </div>
         </div>
     </div>
+
+
 @endif

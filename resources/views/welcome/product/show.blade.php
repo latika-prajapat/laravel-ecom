@@ -34,12 +34,13 @@
                 </p>
                 <div class="d-flex mb-3">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
-                    <form>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-1" name="size">
-                            <label class="custom-control-label" for="size-1">XS</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
+                    <h5 class="text-dark font-weight-medium mb-0 mr-3">{{ $product->size }}</h5>
+                    {{-- <form> --}}
+                    {{-- <div class="custom-control custom-radio custom-control-inline"> --}}
+                    {{-- <input type="radio" class="custom-control-input" id="size-1" name="size"> --}}
+                    {{-- <label class="custom-control-label" for="size-1">{{ $product->description }}</label> --}}
+                    {{-- </div> --}}
+                    {{-- <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="size-2" name="size">
                             <label class="custom-control-label" for="size-2">S</label>
                         </div>
@@ -54,12 +55,13 @@
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="size-5" name="size">
                             <label class="custom-control-label" for="size-5">XL</label>
-                        </div>
-                    </form>
+                        </div> --}}
+                    {{-- </form> --}}
                 </div>
                 <div class="d-flex mb-4">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
-                    <form>
+                    <h5 class="text-dark font-weight-medium mb-0 mr-3">{{ $product->color }}</h5>
+                    {{-- <form>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="color-1" name="color">
                             <label class="custom-control-label" for="color-1">Black</label>
@@ -80,24 +82,30 @@
                             <input type="radio" class="custom-control-input" id="color-5" name="color">
                             <label class="custom-control-label" for="color-5">Green</label>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
-                <div class="d-flex align-items-center mb-4 pt-2">
-                    <div class="input-group quantity mr-3" style="width: 130px;">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus decrement">
-                                {{-- <i class="fa fa-minus "></i> --}}-
-                            </button>
+                <form action="{{ route('Addcart', ['id' => $product->id]) }}" method="GET">
+                    <div class="d-flex align-items-center mb-4 pt-2">
+
+                        <div class="input-group quantity mr-3" style="width: 130px;">
+                            <div class="input-group-btn">
+                            </div>
+                            <input type="number" name="quantity" class="form-control bg-secondary text-center qty-input"
+                                value="1" min="1">
+                            <div class="input-group-btn">
+                            </div>
                         </div>
-                        <input type="text" class="form-control bg-secondary text-center qty-input" value="1">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus " id="increment">
-                                +{{-- <i class="fa fa-plus "></i> --}}
-                            </button>
-                        </div>
+
+                        {{-- @foreach ($featured_products as $prods) --}}
+                        <input type="submit" value="Add To cart" class="form-control bg-secondary text-center qty-input"
+                        value="1" min="1">
+                        {{-- <a href="{{ route('welcome.product.cart', ['id' => $product->id]) }}"
+                            class="btn btn-sm text-dark p-0 mt-4"><i class="fas fa-eye text-primary mr-1"></i>Add
+                            To Cart</a> --}}
+
+                        {{-- @endforeach     --}}
                     </div>
-                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
-                </div>
+                </form>
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
                     <div class="d-inline-flex">
@@ -148,7 +156,7 @@
                                 <a href="" class="btn btn-sm text-dark p-0"><i
                                         class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                                 <a href="" class="btn btn-sm text-dark p-0"><i
-                                        class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                        class="fas fa-shopping-cart text-primary mr-1 AddToCartBtn"></i>Add To Cart</a>
                             </div>
                         </div>
                     </div>
@@ -159,8 +167,12 @@
     <!-- Products End -->
 
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
+
+            $('.AddToCartBtn').click(function(e) {
+                e.preventDefault();
+            })
             $('#increment').click(function(e) {
                 e.preventDefault();
                 var inc_value = $('.qty-input').val();
@@ -183,6 +195,5 @@
             })
         });
        
-    </script>
+    </script> --}}
 @endsection
-
