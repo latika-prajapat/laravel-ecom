@@ -12,7 +12,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 
-// Route::get('/', function () 
+// Route::get('/', function ()
 // {
 //     return view('welcome');
 // });
@@ -24,9 +24,11 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('welcome.
 Route::get('/products/reset', [ProductController::class, 'resetFilters'])->name('welcome.product.reset');
 Route::get('/Addcart/{id}', [ProductController::class, 'Addcart'])->name('Addcart');
 Route::get('/Showcart', [ProductController::class, 'Showcart'])->name('welcome.product.cart');
-Route::get('/remove_cart/{id}',[ProductController::class, 'remove_cart'])->name('remove_cart');;
-Route::get('/checkout',[ProductController::class, 'checkout'])->name('welcome.product.checkout');;
-Route::get('/place_Order',[ProductController::class, 'place_Order'])->name('place_Order');;
+Route::get('/remove_cart/{id}', [ProductController::class, 'remove_cart'])->name('remove_cart');
+Route::get('/checkout', [ProductController::class, 'checkout'])->name('welcome.product.checkout');
+Route::post('/place_Order', [ProductController::class, 'place_Order'])->name('place_Order');
+Route::get('/myorder', [ProductController::class, 'myorder'])->name('welcome.product.myorder');
+
 
 
 Auth::routes();

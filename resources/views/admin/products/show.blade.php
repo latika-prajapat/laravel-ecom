@@ -21,10 +21,10 @@
                     <td>Name</td>
                     <td>{{ $products->name }}</td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td>Slug</td>
                     <td>{{ $products->slug }}</td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td>Description</td>
                     <td>{{ $products->description }}</td>

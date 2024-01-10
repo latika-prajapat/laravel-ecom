@@ -89,9 +89,10 @@ class ProductsController extends Controller
         $products->description = $request->description;
         $products->selling_price = $request->selling_price;
         $products->quantity = $request->quantity;
-        $products->color = $request->color;
-        $products->size = $request->size;
+      $products->color = is_array($request['color']) ? implode(',', $request['color']) : $request['color'];
+       $products->size = is_array($request['size']) ? implode(',', $request['size']) : $request['size'];
         $products->status = $request->status == TRUE ? 1 : 0;
+
         $products->save();
 
         return redirect(route('products.index'))->with('status', 'product added successfully');
@@ -159,8 +160,8 @@ class ProductsController extends Controller
         $products->description = $request->description;
         $products->selling_price = $request->selling_price;
         $products->quantity = $request->quantity;
-        $products->color = $request->color;
-        $products->size = $request->size;
+        $products->color = is_array($request['color']) ? implode(',', $request['color']) : $request['color'];
+       $products->size = is_array($request['size']) ? implode(',', $request['size']) : $request['size'];
         $products->status = $request->status == TRUE ? 1 : 0;
         $products->update();
         return redirect(route('products.index'))->with('status', 'product edited successfully');

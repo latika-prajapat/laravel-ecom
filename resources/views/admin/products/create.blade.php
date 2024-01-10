@@ -31,14 +31,14 @@
                     <input type="text" class="form-control" placeholder="Name" name="name"
                         value="{{ old('name') }}">
                 </div>
-                <div class="input-group input-group-outline mb-4">
+                <!-- <div class="input-group input-group-outline mb-4">
                     <label class="form-label"></label>
                     <input type="text" class="form-control" placeholder="Name" name="slug"
                         value="{{ old('slug') }}">
-                </div>
+                </div> -->
                 {{-- <div class="input-group input-group-outline mb-4">
                     <label class="form-label"></label>
-                    <input type="color" id="color" name="color" 
+                    <input type="color" id="color" name="color"
                         value="{{ old('slug') }}">
                 </div> --}}
                 <div class="input-group input-group-dynamic">
@@ -55,9 +55,10 @@
                     <input type="numb" name="quantity" id="quantity" class="form-control">
 
                 </div>
+                 <label for="color" class="form-label">Colors:</label>
                 <div class="input-group input-group-outline mb-4">
-                    <label for="color" class="form-label"></label>
-                    <select name="color" id="" class="form-select">
+
+                    <select name="color[]" multiple id="" class="form-select">
                         <option value="Black"  {{ old('color') == 'Black' ? 'selected' : '' }}>Black</option>
                         <option value="White"  {{ old('color') == 'White' ? 'selected' : '' }}>White</option>
                         <option value="Red"  {{ old('color') == 'Red' ? 'selected' : '' }}>Red</option>
@@ -65,9 +66,11 @@
                         <option value="Green"  {{ old('color') == 'Green' ? 'selected' : '' }}>Green</option>
                     </select>
                 </div>
+
+                <label for="size" class="form-label">sizes:</label>
                 <div class="input-group input-group-outline mb-4">
-                    <label for="size" class="form-label"></label>
-                    <select name="size" id="" class="form-select">
+
+                    <select name="size[]" multiple id="" class="form-select">
                         <option value="XS"  {{ old('size') == 'XS' ? 'selected' : '' }}>XS</option>
                         <option value="S"  {{ old('size') == 'S' ? 'selected' : '' }}>S</option>
                         <option value="M"  {{ old('size') == 'M' ? 'selected' : '' }}>M</option>

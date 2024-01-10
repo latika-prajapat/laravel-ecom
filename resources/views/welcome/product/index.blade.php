@@ -9,13 +9,13 @@
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
             <div class="col-lg-3 col-md-12">
-                
-                    <a href="" class="btn btn-primary btn-block mt-3 mb-3" >Reset </a>
-                
+
+                    <a href="{{ route('welcome.product.index') }}" class="btn btn-primary btn-block mt-3 mb-3" >Reset </a>
+
                 <!-- Price Start -->
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
-                    
+
                         {{-- <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" name="" class="custom-control-input" checked id="price-all">
                             <label class="custom-control-label" for="price-all">All Price</label>
@@ -52,15 +52,15 @@
                             <label class="custom-control-label" for="price-5">$400 - $500</label>
                             {{-- <span class="badge border font-weight-normal">168</span> --}}
                         </div>
-                        <button class="btn btn-primary btn-block mt-3" type="submit">Filter</button>
-                    
+                        <!-- <button class="btn btn-primary btn-block mt-3" type="submit">Filter</button> -->
+
                 </div>
                 <!-- Price End -->
 
                 <!-- Color Start -->
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Filter by color</h5>
-                    
+
                         <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
                             <input type="radio" class="custom-control-input" id="color-1" name="color" value="Black"
                                 {{ request('color') == 'Black' ? 'checked' : '' }}>
@@ -91,15 +91,15 @@
                             <label class="custom-control-label" for="color-5">Green</label>
                             {{-- <span class="badge border font-weight-normal">168</span> --}}
                         </div>
-                        <button class="btn btn-primary btn-block mt-3" type="submit">Filter</button>
-                    
+                        <!-- <button class="btn btn-primary btn-block mt-3" type="submit">Filter</button> -->
+
                 </div>
                 <!-- Color End -->
 
                 <!-- Size Start -->
                 <div class="mb-5">
                     <h5 class="font-weight-semi-bold mb-4">Filter by size</h5>
-                    
+
                         <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
                             <input type="radio" class="custom-control-input" id="size-1" name="size"
                                 value="XS" {{ request('size') == 'XS' ? 'checked' : '' }}>
@@ -131,7 +131,7 @@
                             {{-- <span class="badge border font-weight-normal">168</span> --}}
                         </div>
                         <button class="btn btn-primary btn-block mt-3" type="submit">Filter</button>
-                    
+
                 </div>
                 <!-- Size End -->
 
@@ -144,7 +144,7 @@
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            
+
                                 <div class="input-group">
                                     <input type="text" name="search" class="form-control"
                                         placeholder="Search by name">
@@ -154,9 +154,9 @@
                                         </button>
                                     </div>
                                 </div>
-                            
+
                             <div class="dropdown ml-4">
-                                
+
                                     <button class="btn border dropdown-toggle" type="button" id="triggerId"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Sort by
@@ -167,7 +167,7 @@
                                         <button class="dropdown-item" type="submit" name="sort" value="oldest"
                                             href="#">oldest</button>
                                     </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -198,7 +198,7 @@
 
                         </div>
                     @endforeach
-                    <div class="col-12 pb-1">
+                    <!-- <div class="col-12 pb-1">
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center mb-3">
                                 <li class="page-item disabled">
@@ -218,7 +218,7 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- Shop Product End -->

@@ -38,19 +38,18 @@ class ProductController extends Controller
             ];
             $products = $products->whereBetween('selling_price', $ranges[$priceRange]);
         }
-
         // color filter
         $color = $request->color;
         if ($color) {
-            $products = $products->whereIn('color', [$color]);
+            $products = $products->orwhereIn('color', [$color]);
         }
         // size filter
         $size = $request->size;
         if ($size) {
-            $products = $products->whereIn('size', [$size]);
+            $products = $products->orwhereIn('size', [$size]);
         }
 
-        //order sort 
+        //order sort
         $sort = $request->sort;
         if ($sort === 'latest') {
             // return('working latetst');
@@ -59,18 +58,16 @@ class ProductController extends Controller
             // return('working oldest');
             $products = $products->orderBy('created_at', 'ASC');
         }
-        
+
         $products = $products->get();
 
         return view('welcome.product.index', compact('products', 'categories'));
     }
-    public function resetFilters()
-    {
-        return redirect()->route('welcome.product.index');
-    }
+
     public function show($id)
     {
         $product = Product::where('id', $id)->first();
+
 
         $categories = Category::where('status', '1')->get();
 
@@ -90,11 +87,14 @@ class ProductController extends Controller
             $cart->product_name = $product->name;
             $cart->price = $product->selling_price * $request->quantity;
             $cart->quantity = $request->quantity;
+            $cart->color = $request->input('color');
+            $cart->size = $request->input('size');
             $cart->image = $product->image;
             $cart->prod_id = $product->id;
-            $cart->save();
-            //    dd($cart);
 
+            $cart->save();
+
+            // dd($request->all());
             return redirect()->back();
 
         } else {
@@ -132,18 +132,41 @@ class ProductController extends Controller
     }
 
 
-    public function place_Order(Request $request){
-         $order= new Order();
-         $order->fname=$request->fname;
-         $order->lname=$request->lname;
-         $order->email=$request->email;
-         $order->phone=$request->phone;
-         $order->address=$request->address;
-         $order->city=$request->city;
-         $order->state=$request->state;
-         $order->country=$request->country;
-         $order->pincode=$request->pincode;
-         $order->tracking_no = 'laravel'.rand(1111,9999);
-         $order->save();
+    public function place_Order(Request $request)
+    {
+        $user_id = auth()->user()->id;
+        $cart_items = Cart::where('user_id', $user_id)->get();
+        foreach ($cart_items as $cart) {
+            $order = new Order;
+            $order->user_id = $user_id;
+            $order->product_name = $cart['Product_name'];
+            $order->price = $cart['price'];
+            $order->quantity = $cart['quantity'];
+            $order->color = $cart['color'];
+            $order->size = $cart['size'];
+            $order->customer_name = $request->customer_name;
+            $order->customer_email = $request->customer_email;
+            $order->customer_phone = $request->customer_phone;
+            $order->status = $request->status;
+            $order->order_number = 'latika' . rand(100000, 999999);
+            // dd($order);
+            $order->save();
+        }
+        Cart::where('user_id', $user_id)->delete();
+        return redirect()->back();
+
+
+
+    }
+
+    public function myorder()
+    {
+        if (Auth::id()) {
+            $order = Order::where('user_id', Auth::id())->get();
+            $categories = Category::where('status', '1')->get();
+            return view('welcome.product.myorder', compact('categories', 'order'));
+        } else {
+            return redirect('login');
+        }
     }
 }

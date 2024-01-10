@@ -31,10 +31,10 @@
                     <label class="form-label"></label>
                     <input type="text" class="form-control" value="{{ $products->name }}" name="name">
                 </div>
-                <div class="input-group input-group-outline mb-4">
+                <!-- <div class="input-group input-group-outline mb-4">
                     <label class="form-label"></label>
                     <input type="text" class="form-control" value="{{ $products->slug }}" name="slug">
-                </div>
+                </div> -->
                 <div class="input-group input-group-dynamic">
                     <textarea class="form-control" name="description" rows="5"
                         placeholder="Say a few words about who you are or what you're working on." spellcheck="false">{{ $products->description }}</textarea>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="input-group input-group-outline mb-4">
                     <label for="color" class="form-label"></label>
-                    <select name="color" id="" class="form-select">
+                    <select name="color[]" multiple id="" class="form-select">
                         <option value="Black" {{ $products->color == 'Black' ? 'selected' : '' }} >Black</option>
                         <option value="White" {{ $products->color == 'White' ? 'selected' : '' }} >White</option>
                         <option value="Red" {{ $products->color == 'Red' ? 'selected' : '' }} >Red</option>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="input-group input-group-outline mb-4">
                     <label for="size" class="form-label"></label>
-                    <select name="size" id="" class="form-select">
+                    <select name="size[]"  multiple  id=""class="form-select">
                         <option value="XS" {{ $products->size == 'XS' ? 'selected' : '' }} >XS</option>
                         <option value="S" {{ $products->size == 'S' ? 'selected' : '' }} >S</option>
                         <option value="M" {{ $products->size == 'M' ? 'selected' : '' }} >M</option>
